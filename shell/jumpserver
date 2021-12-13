@@ -1,0 +1,85 @@
+#!/usr/bin/bash
+###################################################
+#####Autor : liu
+#####Time  : 2021/12
+#####Desrcipe : Jumpserver
+
+Sever971=10.55.128.13
+Sever968=10.237.223.162
+ArcherCity10=10.67.110.224
+ArcherCity11=10.67.111.181
+ArcherCity12=10.67.111.175
+ArcherCity13=10.67.111.64
+ArcherCity22=10.67.110.215
+ArcherCity27=10.67.111.173
+ArcherCity19=10.67.111.182
+ArcherCity30=10.67.110.235
+ArcherCity31=10.67.110.210
+cat <<-EOF
+##################################################
+#####         1.Sever971                      ####
+#####         2.Sever968                      ####
+#####         3.QAT-server-ArcherCity10       ####
+#####         4.QAT-server-ArcherCity11       ####
+#####         5.QAT-server-ArcherCity12       ####
+#####         6.QAT-server-ArcherCity13       ####
+#####         7.QAT-server-ArcherCity22       ####
+#####         8.QAT-server-ArcherCity27       ####
+#####         9.QAT-server-ArcherCity19       ####
+#####         10.QAT-server-ArcherCity30      ####
+#####         11.QAT-server-ArcherCity31      ####
+#####         12.Sever287                     ####
+#####         13.Sever316                     ####
+#####         14.QAT-SWF-Controller-CPM20     ####
+###################################################
+EOF
+echo -en "\e[1;32mpPlease input number: \e[0m"  ###color
+read  number
+case "$number" in
+        1)
+                ssh root@$Sever971
+                ;;
+        2)
+                ssh root@$Sever968
+                ;;
+        3)
+                ssh root@$QAT-server-ArcherCity10
+                ;;
+        4)
+                ssh root@$QAT-server-ArcherCity11
+                ;;
+        5)
+                ssh root@$QAT-server-ArcherCity12
+                ;;
+        6)
+                ssh root@$QAT-server-ArcherCity13
+                ;;
+        7)
+                ssh root@$QAT-server-ArcherCity22
+                ;;
+        8)
+                ssh root@$QAT-server-ArcherCity27
+                ;;
+        9)
+                ssh root@$QAT-server-ArcherCity19
+                ;;
+        10)
+                ssh root@$QAT-server-ArcherCity30
+                ;;
+        11)
+                ssh root@$QAT-server-ArcherCity31
+                ;;
+        12)
+                ssh swf_prc@qat-server-287
+                ;;
+        13)
+                ssh swf_prc@silpixa00400316.ir.intel.com
+                ;;
+        14)
+                ssh swf_prc@QAT-SWF-Controller-CPM20
+                ;;
+        "")
+                ;;
+        *)
+                echo "error"
+esac
