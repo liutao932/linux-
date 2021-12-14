@@ -9,6 +9,8 @@
   9 if [ ! $1 -f ];then
  10         echo " no file"
  11 fi
+    IFS='
+    '
  12 for line in `cat $1`
  13 do
             if [ ${#line} -eq 0 ]; then
