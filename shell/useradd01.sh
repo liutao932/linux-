@@ -11,6 +11,9 @@
  11 fi
  12 for line in `cat $1`
  13 do
+            if [ ${#line} -eq 0 ]; then
+                  continue
+            fi
  14         user=`echo "$line" | awk '{print $1}'`   ####qie ge
  15         passwd=`echo "$line" | awk '{print $2}'`
  16         id $user &>/dev/null
