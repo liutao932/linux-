@@ -1,0 +1,1 @@
+awk '/^[l|s]/' /etc/passwd | awk '/bash$/'  打印以l或者s开头，以bash结尾的数据`
