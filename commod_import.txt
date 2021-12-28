@@ -1,1 +1,3 @@
 awk '/^[l|s]/' /etc/passwd | awk '/bash$/'  打印以l或者s开头，以bash结尾的数据`
+fdisk -l |awk '/^Disk.*bytes/ && /\/dev/{printf $2" ";printf "%d",$3;printf "GB";printf "\n"}'   输出（/dev/vda: 80GB）打印以Disk开头以bytes结尾的，并且中间要有/dev的数据
+ss -ant |awk '!/State/ {status[$1]++} END{for (i in status) {print i,status[i]}}' 过滤掉State不要其他的求总和
