@@ -1,0 +1,10 @@
+#include<stdio.h>
+#include<stdlib.h>
+#define MAX 1024
+int main()
+{
+        char buf[MAX];
+        int year=2021,month=12,data=29;
+        sprintf(buf,"%d-%d-%d",year,month,data);
+        printf("%s\n",buf);
+}
