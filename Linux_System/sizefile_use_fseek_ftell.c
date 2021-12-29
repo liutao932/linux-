@@ -17,3 +17,5 @@ int main(int argc,char **argv)
     fseek(fp,0,SEEK_END);
     printf("%d\n",ftell(fp));
 }
+
+rewind是回到文件首
