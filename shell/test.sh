@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-####this is test
 while read line
 do
         cd WGCTF2
