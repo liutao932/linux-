@@ -1,0 +1,28 @@
+#!/usr/bin/bash
+##########################
+##########################
+PS3="Your choice is:"
+
+select chioce in disk_parttion filesystem cpu_load mem_unti quit
+do
+	case "${chioce}" in
+		disk_parttion)
+		fdisk -l
+		;;
+		filesystem)
+		df -h
+		;;
+		cpu_load)
+		uptime
+		;;
+		mem_unti)
+		free -m
+		;;
+		quit)
+		break
+		;;
+		*)
+		echo "error"
+		exit
+	esac
+done
