@@ -1,40 +1,57 @@
 #include<stdio.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include<stdlib.h>
+//#define BUFSIZE 1024
 
 
 int main(int argc,char **argv)
 {
-
 	if(argc <3)
 	{
-		fprintf(stderr,"Useg:%s<src_file><dst_file>",argv[0]);
-		exit(-1);
+		fprintf(stderr,"Useg:%s<src_file><dest_file>",argv[0]);
 	}
-	int ch;
-	FILE * fbs, *fdb;
-	fbs = fopen(argv[1],"r");
-	if(fbs == NULL)
-	{
-		perror("fopen()");
-		exit(1);
-	}
-	fdb = fopen(argv[2],"w");
-	if(fdb == NULL)
-	{
-		fclose(fbs);
-		perror("fopen()");
-		exit(1);
-	}
+	int sfd,dfd,len,ret,pos;
+	char buf[BUFSIZE];
 
+	sfd = open(argv[1],O_RDONLY);
+	if(sfd < 0)
+	{
+		perror("open()");
+		exit(1);
+	}
+	dfd = open(argv[2],O_WRONLY|O_TRUNC|O_CREAT);
+if(dfd<0)
+	{
+		perror("open()");
+		exit(1);
+	}
+	
+	pos = 0;
 	while(1)
 	{
-		ch = fgetc(fbs);
-		if(ch == EOF)
+		len = read(sfd,buf,BUFSIZE);
+		if(len < 0)
 		{
+			perror("read()");
+			break;	
+		}	
+		if(len == 0)
 			break;
+		while(len > 0)
+		{
+			ret = write(dfd,buf+pos,len);
+			if(ret < 0)
+			{
+				perror("wirte()");
+				exit(1);
+			}
+			pos += ret;
+			len -= ret;
 		}
-		fputc(ch,fdb);
 	}
-	fclose(fbs);
-	fclose(fdb);
+
+	close(dfd);
+	close(sfd);
 }
