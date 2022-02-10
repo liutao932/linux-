@@ -20,9 +20,9 @@ int main()
                 for( j = 0; j< 5; j++)
                 {
                         write(1,"*",1);
+                        sleep(1);
                 }
-                printf("\n");
-                sleep(1);
+                write(1,"\n",1);
                 sigprocmask(SIG_UNBLOCK,&set,NULL);
         }
 }
